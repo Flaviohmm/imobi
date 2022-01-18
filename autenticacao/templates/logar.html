@@ -6,13 +6,11 @@
     <link rel="stylesheet" href="{% static 'autenticacao/css/cadastro.css' %}">
 {% endblock 'head' %}
 
-{% block 'titulo' %} Cadastre-se {% endblock 'titulo' %}
+{% block 'titulo' %}Logar{% endblock 'titulo' %}
 
 {% block 'body' %}
-
     <div class="container-fluid">
         <div class="row">
-
             <div class="col-md-3 sidebar">
                 <div class="logo_sidebar">
                     <h2 class="logo">
@@ -22,51 +20,42 @@
 
                 <div class="corpo_sidebar">
                     <div>
-                        <h2 class="titulo cor_branca">Cadastre-se</h2>
+                        <h2 class="titulo cor_branca">Logar</h2>
                     </div>
 
                     <div>
                         <p class="cor_branca descricao">As melhores casas</p>
-                        <p style="margin-top:-20px;" class="cor_branca descricao">Nos melhores preços</p>
+                        <p style="margin-top: -20px;" class="cor_branca descricao">Nos melhores preços</p>
                         <br>
                         <br>
-                        <a href="{% url 'logar' %}" class="btn_logar">LOGAR</a>
-                    </div>
-
+                        <a href="{% url 'cadastro' %}" class="btn_logar">Cadastre-se</a>
+                    </div>    
                 </div>
             </div>
 
             <div class="col-md-9">
                 <div class="area_cadastrar">
-                    <form action="{% url 'cadastro' %}" method="POST">
-
+                    <h2 class="titulo_area_cadastrar">Logar</h2>
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert {{message.tags}}">
+                                {{message}}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    <br>
+                    <br>
+                    <form action="{% url 'logar' %}" method="post">
                         {% csrf_token %}
-                        <h2 class="titulo_area_cadastrar">Cadastre-se</h2>
-
-                        {% if messages %}
-                            {% for message in messages %}
-                                <div class="alert {{message.tags}}">
-                                    {{message}}
-                                </div>
-                            {% endfor %}
-                        {% endif %}
-
-                        <br>
-
                         <input name="username" type="text" class="input_cadastrar input_cadastrar_nome" placeholder="Username...">
-                        <br>
-                        <br>
-                        <input name="email" type="text" class="input_cadastrar input_cadastrar_email" placeholder="Email...">
                         <br>
                         <br>
                         <input name="senha" type="password" class="input_cadastrar input_cadastrar_senha" placeholder="Senha...">
                         <br>
-                        <input type="submit" value="Cadastrar" class="btn_cadastrar">
+                        <input type="submit" value="Logar" class="btn_cadastrar">
                     </form>
                 </div>
             </div>
-
         </div>
     </div>
-
 {% endblock 'body' %}
