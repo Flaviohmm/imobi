@@ -19,7 +19,7 @@
                     <div class="card_imovel">
                         <img src="{{imovel.imagens.all.0.img.url}}" class="img_capa_imovel">
                         <div class="informacoes_imoveis">
-                            <a href="" class="a_none"><h4 class="valor">R$ {{imovel.valor}}</h4></a>
+                            <a href="{% url 'imovel' imovel.id %}" class="a_none"><h4 class="valor">R$ {{imovel.valor}}</h4></a>
                             <p>{{imovel.rua}}, {{imovel.cidade}}</p>
                             <br>
                             <img src="{% static 'plataforma/img/heart.png' %}" width="7%">
